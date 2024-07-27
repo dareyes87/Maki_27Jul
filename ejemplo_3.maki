@@ -1,0 +1,21 @@
+; =============
+; RES = !NUM
+; =============
+
+; segmento de datos
+BEGIN-DATA
+        NUM=10          
+        FACT=?        
+END-DATA
+
+; segmento de código
+BEGIN-CODE
+        MOV 1,[FACT]
+BUCLE:  MUL [FACT],[NUM]
+        MOV AC,[FACT]
+        SUB [NUM],1
+        MOV AC,[NUM]
+        CMP [NUM],1
+        JGT BUCLE        
+        TERM            
+END-CODE

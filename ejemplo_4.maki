@@ -1,0 +1,25 @@
+; =============
+; RES = NUM^POTENCIA
+; =============
+
+;segmento de datos
+BEGIN-DATA
+        NUM=10    
+        POTENCIA=3
+        CONTADOR=?
+        RES=?        
+END-DATA
+
+; segmento de codigo
+BEGIN-CODE
+		MOV [NUM],[RES]
+		MOV [POTENCIA],[CONTADOR]
+BUCLE:	SUB [CONTADOR],1
+		MOV AC,[CONTADOR]
+		CMP [CONTADOR],0
+		JE  FIN
+		MUL [RES],[NUM]
+		MOV AC,[RES]
+		JMP BUCLE
+FIN:	TERM
+END-CODE
